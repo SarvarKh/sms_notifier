@@ -1,0 +1,41 @@
+<div style="width: 100vw;">
+    <div class="container form-control mt-4 p-4">
+        <h2 class="my-2 p-2">Sign up</h2>
+        <%= form_for(@user) do |form| %>
+
+            <% if @user.errors.any? %>
+                <div class="alert alert-danger">
+                    <h5 class="fw-bold">Invalid input!</h5>
+                    <%= @user.errors.full_messages.each do |error| %>
+                        <div><%= error %></div>
+                    <% end %>
+                </div>
+            <% end %>
+
+            <p class="mb-3">
+                <%= form.label :name, class: "form-label" %>
+                <%= form.text_field :name, class: "form-control", autofocus: true, placeholder: "John_D" %>
+            </p>
+            <p class="mb-3">
+                <%= form.label :position %>
+                <%= form.text_field :position, class: "form-control", placeholder: "Engineer" %>
+            </p>
+            <p class="mb-3">
+                <%= form.label :department %>
+                <%= form.text_field :department, class: "form-control", placeholder: "Mechanical" %>
+            </p>
+            <p class="mb-3">
+                <%= form.label :telephone %>
+                <%= form.number_field :telephone, class: "form-control", placeholder: "+998 (xx) 123 45 67" %>
+            </p>
+            <p class="mb-3">
+                <%= form.label :link %>
+                <%= form.text_field :link, class: "form-control", placeholder: "@twitter_username" %>
+            </p>
+            
+            <p class="mb-3">
+                <%= form.submit "Sign up", class: "btn btn-primary" %>
+            </p>
+        <% end %>
+    </div>
+</div>
