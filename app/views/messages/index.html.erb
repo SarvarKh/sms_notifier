@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+    <h1>Messages</h1>
+    <% @messages.each do |m| %>
+        <p>
+            <%= m.content %>
+        </p>
+    <% end %>
+<% else %>
+    <%= unauthorized_user %>
+<% end %>
+
