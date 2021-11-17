@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_125725) do
+ActiveRecord::Schema.define(version: 2021_11_17_114224) do
 
   create_table "messages", force: :cascade do |t|
-    t.integer "admin_id"
+    t.integer "user_id"
     t.string "subject"
     t.text "content"
     t.integer "recipient_id"
