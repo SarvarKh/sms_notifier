@@ -11,6 +11,36 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if flash[:notice] %>
+      <p class="alert alert-primary"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="navbar-nav">
+          <%= link_to 'All Messages', root_path, class: "nav-item nav-link active text-white" %>
+            <% if user_signed_in? %>
+              <p class="control">
+                <%= link_to current_user.name, edit_user_registration_path, class: "nav-item nav-link text-white" %>
+              </p>
+              <p>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-item nav-link text-white" %>
+              </p>
+            <% else %>
+              <p class="control">
+                <%= link_to 'Sign In', new_user_session_path, class: "nav-item nav-link text-white" %>
+              </p>
+              <p class="control">
+                <%= link_to 'Sign Up', new_user_registration_path, class: "nav-item nav-link text-white" %>
+              </p>
+            <% end %>
+        </div>
+    </nav>
+
+    <div class="container-fluid" >
+      <%= yield %>
+    </div>
   </body>
 </html>
